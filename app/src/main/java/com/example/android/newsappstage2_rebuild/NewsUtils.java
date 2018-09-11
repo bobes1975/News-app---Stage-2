@@ -43,7 +43,7 @@ public class NewsUtils {
 
     private static final String fields = "fields";
 
-    private static final String thumbs = "thumbnail";
+    private static final String thumbnail = "thumbnail";
 
 
     /**
@@ -156,6 +156,7 @@ public class NewsUtils {
                 inputStream.close();
             }
         }
+
         return jsonResponse;
     }
 
@@ -254,9 +255,18 @@ public class NewsUtils {
 
                 }
 
+                //Create a JSONObject for thumbnail
+                JSONObject currentNewsThumbnail = currentNews.getJSONObject(fields);
+
+                //Extract the JSONArray associated with the key called "fields"
+                String newsThumbnail = currentNewsThumbnail.getString(thumbnail);
+
+
                 // Create a new News object with the title, category, author, date, url ,
                 // from the JSON response.
-                News newNews = new News(newsTitle, newsSection, newsAuthor, newsDate, newsUrl);
+                News newNews = new News(newsTitle, newsSection, newsAuthor, newsDate, newsUrl, newsThumbnail);
+
+                //News newNews = new News(newsTitle, newsSection, newsAuthor, newsDate, newsUrl);
 
                 // Add the new {@link News} to the list of News.
                 newsList.add(newNews);

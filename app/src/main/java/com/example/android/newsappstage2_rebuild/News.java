@@ -16,7 +16,10 @@ public class News {
     // News URL
     private final String newsUrl;
 
-    /**
+    // News thumb url
+    private final String newsThumb;
+
+    /*
      * Constructs a new EducationNews object.
      *
      * @param title    is news title
@@ -24,14 +27,16 @@ public class News {
      * @param author   is author name
      * @param date     is news date publishing
      * @param url      is news URL
+    //* @param thumb   is news thumbnail url
      */
 
-    public News(String title, String category, String author, String date, String url) {
+    public News(String title, String category, String author, String date, String url, String thumb) {
         newsTitle = title;
         newsCategory = category;
         newsAuthor = author;
         newsDate = date;
         newsUrl = url;
+        newsThumb = thumb;
     }
 
     /**
@@ -67,6 +72,13 @@ public class News {
      */
     public String getUrl() {
         return newsUrl;
+    }
+
+
+    //Returns the thumbnail URL.
+
+    public String getNewsThumb() {
+        return newsThumb;
     }
 
 }

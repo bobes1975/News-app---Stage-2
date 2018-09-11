@@ -54,6 +54,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     // Constant value for section
     private static final String SECTION = "section";
 
+    //Constant for thumbnail
+    public static final String FIELD = "show-fields";
+    public static final String THUMBNAIL = "thumbnail";
+
+
     // Constant value for the news loader ID. We can choose any integer.
     private static final int NEWS_LOADER_ID = 1;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -199,6 +204,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         uriBuilder.appendQueryParameter(ORDER, DATE);
         uriBuilder.appendQueryParameter(TAGS, AUTHOR);
+
+
+        //pridat thumbnail cast
+        uriBuilder.appendQueryParameter(FIELD, THUMBNAIL);
+
+
         uriBuilder.appendQueryParameter(PAGE, PAGES);
         uriBuilder.appendQueryParameter(API_KEY, KEY);
 

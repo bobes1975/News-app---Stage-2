@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.ParseException;
@@ -14,6 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+
+import com.squareup.picasso.Picasso;
+
 
 public class NewsAdapter extends ArrayAdapter<News> {
 
@@ -69,7 +73,18 @@ public class NewsAdapter extends ArrayAdapter<News> {
             e.printStackTrace();
         }
 
-        // Return the whole list item layout (containing ! TextView and an ImageView)
+        //display image thumbnail via Picasso
+
+        // Find the TextView with News Author in the activity_main.xml layout with the ID category
+        ImageView newsThumbnailImageView = listItemView.findViewById(R.id.newsImage);
+
+        // Display the category of the current news in that TextView
+
+       Picasso.get().load(currentNewsClass.getNewsThumb()).into(newsThumbnailImageView);
+
+        //Picasso.get().load(R.drawable.p_10).into(newsThumbnailImageView);
+
+        //// Return the whole list item layout (containing ! TextView and an ImageView)
         // so that it can be shown in the ListView
         return listItemView;
     }
