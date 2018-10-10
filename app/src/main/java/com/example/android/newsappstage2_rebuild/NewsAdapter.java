@@ -7,7 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -68,6 +71,21 @@ public class NewsAdapter extends ArrayAdapter<News> {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        //load news thumbnail
+        ImageView newsImageThumbnail = listItemView.findViewById(R.id.imageView);
+
+
+        if (currentNewsClass.getImageUrl().isEmpty()){
+            newsImageThumbnail.setVisibility(View.INVISIBLE);
+
+        } else
+        {
+        Glide
+        .with(getContext())
+                .load(currentNewsClass.getImageUrl())
+                .into(newsImageThumbnail);}
+
 
         // Return the whole list item layout (containing ! TextView and an ImageView)
         // so that it can be shown in the ListView

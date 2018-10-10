@@ -54,6 +54,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     // Constant value for section
     private static final String SECTION = "section";
 
+    // Constant value for adding article thumbnail
+    private static final String SHOW_FIELDS = "show-fields";
+    private static final String THUMBNAIL = "thumbnail";
+
     // Constant value for the news loader ID. We can choose any integer.
     private static final int NEWS_LOADER_ID = 1;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -163,8 +167,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public Loader<List<News>> onCreateLoader(int id, Bundle args) {
         // Create a new loader for the given URL
 
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String searchCategory = sharedPreferences.getString(
                 getString(R.string.pick_category1),
                 getString(R.string.all));
@@ -200,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         uriBuilder.appendQueryParameter(ORDER, DATE);
         uriBuilder.appendQueryParameter(TAGS, AUTHOR);
         uriBuilder.appendQueryParameter(PAGE, PAGES);
+        uriBuilder.appendQueryParameter(SHOW_FIELDS, THUMBNAIL);
         uriBuilder.appendQueryParameter(API_KEY, KEY);
 
         return new NewsLoader(this, uriBuilder.toString());

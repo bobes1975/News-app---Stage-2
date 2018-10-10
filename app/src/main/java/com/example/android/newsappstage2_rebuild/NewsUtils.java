@@ -219,6 +219,13 @@ public class NewsUtils {
                 // Get a single news article at position i within the list of news
                 JSONObject currentNews = newsArray.getJSONObject(i);
 
+
+
+                // Extract the JSONObject associated with the key called "thumbnail" and extract web link for thumbnail
+                JSONObject thumbnailJsonNews = currentNews.getJSONObject(fields);
+                String imageUrl = thumbnailJsonNews.getString(thumbs);
+
+
                 // Extract the section name for the key called "sectionName"
                 String newsSection = currentNews.getString(section);
 
@@ -254,9 +261,10 @@ public class NewsUtils {
 
                 }
 
+
                 // Create a new News object with the title, category, author, date, url ,
                 // from the JSON response.
-                News newNews = new News(newsTitle, newsSection, newsAuthor, newsDate, newsUrl);
+                News newNews = new News(newsTitle, newsSection, newsAuthor, newsDate, newsUrl, imageUrl);
 
                 // Add the new {@link News} to the list of News.
                 newsList.add(newNews);
