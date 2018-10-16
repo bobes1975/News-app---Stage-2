@@ -1,5 +1,6 @@
 package com.example.android.newsappstage2_rebuild;
 
+
 public class News {
     // News title
     private final String newsTitle;
@@ -19,9 +20,35 @@ public class News {
     // Thumbnail URL
     private final String thumbnailUrl;
 
+
+    public String getNewsTitle() {
+        return newsTitle;
+    }
+
+    public String getNewsCategory() {
+        return newsCategory;
+    }
+
+    public String getNewsAuthor() {
+        return newsAuthor;
+    }
+
+    public String getNewsDate() {
+        return newsDate;
+    }
+
+    public String getNewsUrl(int position) {
+        return newsUrl;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
     /**
      * Constructs a new EducationNews object.
-     *  @param title    is news title
+     *
+     * @param title    is news title
      * @param category is the section of the news
      * @param author   is author name
      * @param date     is news date publishing
@@ -38,46 +65,7 @@ public class News {
         thumbnailUrl = imageUrl;
     }
 
-    /**
-     * Returns the news title.
-     */
-    public String getNewsTitle() {
-        return newsTitle;
-    }
 
-    /**
-     * Returns the news category.
-     */
-    public String getNewsCategory() {
-        return newsCategory;
-    }
 
-    /**
-     * Returns the name of author.
-     */
-    public String getNewsAuthor() {
-        return newsAuthor;
-    }
-
-    /**
-     * Returns publishing date.
-     */
-    public String getNewsDate() {
-        return newsDate;
-    }
-
-    /**
-     * Returns the news URL.
-     */
-    public String getUrl() {
-        return newsUrl;
-    }
-
-    /**
-     * Returns the news thumbnail URL.
-     */
-    public String getImageUrl() {
-        return thumbnailUrl;
-    }
 
 }
