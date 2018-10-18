@@ -54,12 +54,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         // Reformat and display news date
         SimpleDateFormat dateFormatJSON = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH);
         SimpleDateFormat dateFormat2 = new SimpleDateFormat("EE dd MMM yyyy", Locale.ENGLISH);
+
         String newDate = null;
         String oldDate = news.getNewsDate();
 
         try {
+            Date date = dateFormatJSON.parse(oldDate);
             newDate = dateFormat2.format(date);
-            Toast.makeText(mActivity, newDate, Toast.LENGTH_SHORT).show();
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
