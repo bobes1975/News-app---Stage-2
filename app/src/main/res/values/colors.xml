@@ -6,5 +6,16 @@
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
 
+    <color name="world">#b3e6ff</color>
+    <color name="us">#cee7b1</color>
+    <color name="uk">#f9d3b9</color>
+    <color name="business">#f9d59f</color>
+    <color name="science">#c1e4f0</color>
+    <color name="society">#afcce9</color>
+    <color name="sport">#b1bee7</color>
+    <color name="art">#f9bdb9</color>
+    <color name="technology">#d2bbdd</color>
+
+    <color name="other">#e6e6e6</color>
 
 </resources>

@@ -12,13 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.NewsViewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.NewsViewHolder> {
 
 
     public static List<News> mNewsList;
@@ -33,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_card_view,parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_card_view, parent, false);
         return new NewsViewHolder(view);
     }
 
@@ -45,22 +50,61 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.titleNews.setText(news.getNewsTitle());
         holder.categoryNews.setText(news.getNewsCategory());
         holder.authorNews.setText(news.getNewsAuthor());
-        holder.dateNews.setText(news.getNewsDate());
 
-        String categoryNews = news.getNewsCategory();
+        // Reformat and display news date
+        SimpleDateFormat dateFormatJSON = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH);
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("EE dd MMM yyyy", Locale.ENGLISH);
+        String newDate = null;
+        String oldDate = news.getNewsDate();
 
+        try {
+            newDate = dateFormat2.format(date);
+            Toast.makeText(mActivity, newDate, Toast.LENGTH_SHORT).show();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
-       /* String categoryNews = news.getNewsCategory();
+        holder.dateNews.setText(newDate);
 
-        if (categoryNews == "world")(
-               list_item.setCardBackgroundColor(R.color.world));
+        //change color of the empty textview to highlight category
 
+        if (news.getNewsCategory().equals((mActivity.getString(R.string.world)))) {
+            holder.colorCategory.setBackgroundResource(R.color.world);
+        }
 
-        //CardView card = card.setCardBackgroundColor(color);
+        if (news.getNewsCategory().equals((mActivity.getString(R.string.us)))) {
+            holder.colorCategory.setBackgroundResource(R.color.us);
+        }
 
-*/
+        if (news.getNewsCategory().equals((mActivity.getString(R.string.uk)))) {
+            holder.colorCategory.setBackgroundResource(R.color.uk);
+        }
 
-        Glide.with (mActivity)
+        if (news.getNewsCategory().equals((mActivity.getString(R.string.business)))) {
+            holder.colorCategory.setBackgroundResource(R.color.business);
+        }
+
+        if (news.getNewsCategory().equals((mActivity.getString(R.string.science)))) {
+            holder.colorCategory.setBackgroundResource(R.color.science);
+        }
+
+        if (news.getNewsCategory().equals((mActivity.getString(R.string.society)))) {
+            holder.colorCategory.setBackgroundResource(R.color.society);
+        }
+
+        if (news.getNewsCategory().equals((mActivity.getString(R.string.sport)))) {
+            holder.colorCategory.setBackgroundResource(R.color.sport);
+        }
+
+        if (news.getNewsCategory().equals((mActivity.getString(R.string.art)))) {
+            holder.colorCategory.setBackgroundResource(R.color.art);
+        }
+
+        if (news.getNewsCategory().equals((mActivity.getString(R.string.technology)))) {
+            holder.colorCategory.setBackgroundResource(R.color.technology);
+        }
+
+        Glide.with(mActivity)
                 .load(news.getThumbnailUrl())
                 .into(holder.imageThumbnail);
 
@@ -78,18 +122,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 // Send the intent to launch a new activity
                 mActivity.startActivity(websiteIntent);
             }
-
-
         });
-
     }
-
 
     @Override
     public int getItemCount() {
         return mNewsList.size();
     }
-
 
     public class NewsViewHolder extends RecyclerView.ViewHolder {
         ImageView imageThumbnail;
@@ -98,6 +137,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView authorNews;
         TextView dateNews;
         CardView list_item;
+        TextView colorCategory;
 
         public NewsViewHolder(View itemView) {
             super(itemView);
@@ -109,8 +149,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             dateNews = itemView.findViewById(R.id.newsDate);
 
             list_item = itemView.findViewById(R.id.list_item);
+
+            colorCategory = itemView.findViewById(R.id.categoryColor);
         }
-
     }
-
 }

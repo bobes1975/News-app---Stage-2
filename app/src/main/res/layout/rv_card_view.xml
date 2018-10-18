@@ -8,7 +8,15 @@
     android:layout_margin="@dimen/dim8"
     tools:context="com.example.android.newsappstage2_rebuild.MainActivity"
     android:id="@+id/list_item"
+    app:cardElevation="@dimen/dim8"
     >
+
+    <TextView
+        android:layout_width="@dimen/dim16"
+        android:layout_height="match_parent"
+        android:id="@+id/categoryColor"
+        android:background="@color/other"
+        />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,6 +43,7 @@
             android:paddingTop="@dimen/dim8"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/text20"
+            android:layout_marginStart="@dimen/dim16"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
