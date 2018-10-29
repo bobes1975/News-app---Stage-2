@@ -40,6 +40,7 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         return News;
     }
 }
